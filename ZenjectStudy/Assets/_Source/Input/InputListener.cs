@@ -1,3 +1,4 @@
+using ShooterSystem;
 using UnityEngine;
 
 namespace InputSystem
@@ -5,6 +6,8 @@ namespace InputSystem
     public class InputListener : MonoBehaviour
     {
         [SerializeField] private KeyCode shootKey;
+
+        private Shooter _shooter;
 
         private void Update()
         {
@@ -14,9 +17,14 @@ namespace InputSystem
             }
         }
 
+        public void Setup(Shooter shooter)
+        {
+            _shooter = shooter;
+        }
+
         private void OnShootInput()
         {
-
+            _shooter?.Shoot();
         }
     }
 }
